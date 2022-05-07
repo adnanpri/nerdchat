@@ -1,0 +1,253 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./RobotoMono-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+div#tabsContainer {
+  width: 48px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  /* border: 1px solid red; */
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: #404566;
+}
+
+div#tabsContainer ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#tabsContainer ul li {
+  width: 48px;
+  height: 48px;
+  /* border: 1px solid red; */
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+
+div#tabsContainer ul li.active {
+  background: #277183;
+}
+
+/* div#tabsContainer ul li:hover {
+  height: 72px;
+} */
+
+div#tabsContainer ul li .tabSelectorSettings {
+  width: 48px;
+  height: 24px;
+  position: absolute;
+  display: none;
+  top: 0;
+  font-size: 12px;
+  border-radius: 0;
+  border: none;
+  background-color: red;
+  color: white;
+  left: 48px;
+  z-index: 300;
+}
+
+div#tabsContainer ul li:hover .tabSelectorSettings {
+  display: block;
+}
+
+img.tabSelectorImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  margin-left: 6px;
+  margin-top: 6px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+webview.mainWebview {
+  position: absolute;
+  left: 48px;
+  top: 0px;
+  width: calc(100% - 48px);
+  height: calc(100%);
+  background: #fff;
+}
+
+div#webviewContainer {
+  height: 100%;
+}
+
+div#settingsModal {
+  /* border: 1px solid red; */
+  position: absolute;
+  min-width: 50%;
+  min-height: 50%;
+  top: 0;
+  left: 0;
+  /* margin-top: calc(50%); */
+  transform: translate(50%, 50%);
+  /* background-color: antiquewhite; */
+  border-radius: 6px;
+  display: none;
+  z-index: 200;
+  color: #f3f3f3;
+  background-color: #404566;
+}
+
+div#settingsModal .settingsContainer {
+  margin: 5%;
+}
+
+div#settingsModal label {
+  min-width: 40%;
+  display: block;
+  margin: 6px;
+}
+
+div#settingsModal .buttonsContainer {
+  position: absolute;
+  bottom: 24px;
+  width: 90%;
+}
+
+div#settingsModal .suggestionsContainer {
+  margin: 32px 0;
+  padding-bottom: 48px;
+}
+
+div#settingsModal .suggestion {
+  background: rgb(154 215 246);
+  padding: 4px 8px;
+  cursor: pointer;
+  margin: 4px 4px;
+  display: inline-block;
+  border-radius: 24px;
+  color: #404566;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  padding: 0px 16px;
+  border-radius: 2px;
+  min-width: 80px;
+  height: 32px;
+  background-color: rgb(0, 120, 212);
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 120, 212);
+}
+
+.btn.danger {
+  background-color: rgb(212, 120, 0);
+  border: 1px solid rgb(212, 120, 0);
+}
+
+.btn.danger:hover {
+  background-color: rgba(212, 120, 0, .8);
+  border: 1px solid rgba(212, 120, 0, .8);
+}
+
+.btn:hover {
+  background-color: rgba(0, 120, 212, .8);
+  border: 1px solid rgba(0, 120, 212, .8);
+}
+
+.setting {
+  position: relative;
+}
+
+.setting input[type=input] {
+  display: inline-block;
+  padding: 0 12px 0 12px;
+  width: calc(100% - 24px);
+  line-height: 30px;
+  height: 32px;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  background-color: #fff;
+  color: rgb(8, 7, 7);
+  transition: border .1s linear, background-color .1s linear;
+  color: #404566;
+}
+
+.setting img#tabSettingsFaviconPlaceholder {
+  position: absolute;
+  top: 26px;
+  right: -1px;
+  display: block;
+}
+
+.setting input[type=input]:focus {
+  border-color: #1b96ff;
+  box-shadow: rgb(1, 118, 211) 0px 0px 3px 0px;
+}
+
+.setting input[type=checkbox] {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  background-color: #fff;
+  color: rgb(8, 7, 7);
+  transition: border .1s linear, background-color .1s linear;
+}
+
+div#noService {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  text-align: center;
+  padding: 200px;
+  background: #f3f1fb;
+  display: none;
+}
+
+div#noService img {
+  width: 100%;
+}
+
+div#projectInfo {
+  text-align: right;
+  background: url(./nerdchat.png);
+  background-size: 48px;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  padding-top: 60px;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+div#projectInfo > * {
+  display: block;
+}

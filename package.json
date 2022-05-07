@@ -1,0 +1,31 @@
+{
+  "name": "nerdchat",
+  "version": "1.0.0",
+  "description": "A minimalist messaging app aggregator.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron --trace-warnings .",
+    "debug": "DEBUG=1 electron --trace-warnings .",
+    "package": "npx electron-packager . NerdChat --overwrite --platform linux --arch x64 --out dist/"
+  },
+  "repository": "https://github.com/adnanpri/nerdchat",
+  "keywords": [
+    "electron",
+    "messaging",
+    "chat",
+    "ferdi",
+    "franz"
+  ],
+  "author": {
+    "name": "Adnan Pri",
+    "email": "nanoprion@outlook.com"
+  },
+  "license": "GPL v2",
+  "devDependencies": {
+    "electron": "^18.1.0",
+    "electron-packager": "^15.5.1"
+  },
+  "dependencies": {
+    "electron-context-menu": "^3.1.2"
+  }
+}

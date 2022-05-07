@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NerdChat
+Exec=/opt/NerdChat/NerdChat
+Terminal=false
+Type=Application
+Icon=/opt/NerdChat/resources/app/renderer/res/nerdchatv3.png
+StartupWMClass=NerdChat
+Comment=NerdChat is a minimalist messaging app aggregator.
+Categories=Network;InstantMessaging;

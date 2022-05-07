@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <link href="./res/styles.css" rel="stylesheet">
+  <title>NerdChat</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+  
+  <div id="tabsContainer">
+    <ul class="tabsSelectors">
+    </ul>
+  </div>
+  
+  <div id="webviewContainer">
+  </div>
+  
+  <div id="settingsModal">
+    <div class="settingsContainer">
+      <div class="setting" style="display: none;">
+        <label for="tabId">The tab's unique ID</label>
+        <input type="input" name="tabId" id="tabSettingsId">
+      </div>
+      <div class="setting">
+        <label for="tabUrl">Service URL</label>
+        <input type="input" name="tabUrl" id="tabSettingsUrl">
+        <img src="" id="tabSettingsFaviconPlaceholder" alt="">
+      </div>
+      <div class="setting" style="display: none;">
+        <label for="tabFavicon">Favicon URL</label>
+        <input type="input" name="tabFavicon" id="tabSettingsFavicon">
+      </div>
+      <div class="setting">
+        <label for="tabTitle">Title</label>
+        <input type="input" name="tabTitle" id="tabSettingsTitle">
+      </div>
+      <div class="setting">
+        <label for="tabNotifications">Get desktop notifications?</label>
+        <input type="checkbox" name="tabNotifications" id="tabSettingsNotifications">
+      </div>
+      <div class="setting">
+        <label for="tabPreloadScript">Run preload script? (unregisters service workers)</label>
+        <input type="checkbox" name="tabPreloadScript" id="tabSettingsPreloadScript">
+      </div>
+      
+      <div class="suggestionsContainer">
+        <span>Presets</span>
+      </div>
+
+      <div class="buttonsContainer">
+        <button class="btn" id="btnSaveTabSettings">Save</button>
+        <button class="btn danger" id="btnDeleteTabSettings">Delete</button>
+        <button class="btn" id="btnCloseTabSettings" style="float: right;">Cancel</button>
+      </div>
+      
+    </div>
+  </div>
+
+  <div id="noService">
+    <img src="./res/noservice.png" alt="">
+    <span>No service added. Click on (+) and start adding services! :)</span>
+
+    <div id="projectInfo">
+        
+      <a href="https://github.com/adnanpri/nerdchat">https://github.com/adnanpri/nerdchat</a>
+      <span>Illustrations from <a href="https://illustrates.xyz">illustrates.xyz</a></span>
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+</html>
