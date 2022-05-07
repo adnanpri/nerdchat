@@ -61,4 +61,4 @@ npm run debug # to see debug output on inspector/terminal -- for development pur
 
 ## License
 
-[GPL v2)](LICENSE.md)
+[GPL v2](LICENSE.md)
