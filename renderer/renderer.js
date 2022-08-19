@@ -322,6 +322,13 @@ $('#tabSettingsUrl').addEventListener('keyup', debounce(() => {
 mainApp.registerShortcutsHandler((key) => {
 	devlog('from renderer shortcut handler, key: ' + key)
 
+	if (key == 'reload') {
+		if (currentTabIndex == undefined) return
+
+		$$('.mainWebview')[currentTabIndex].reload()
+		return
+	}
+
 	if (key - 1 < 0
 		|| key - 1 > tabs.length) {
 			devlog('shortcut out of bounds')
@@ -344,7 +351,6 @@ mainApp.registerZoomHandler((dir) => {
 	} else {
 		$$('.mainWebview')[currentTabIndex].setZoomLevel(zoomLevel-1)
 	}
-	devlog()
 })
 
 let makePresets = (suggestions) => {

@@ -58,7 +58,7 @@ let template = [
   {
     label: 'View',
     submenu: [
-      { role: 'reload' },
+      // { role: 'reload' },
       { role: 'forceReload' },
       { role: 'toggleDevTools' },
       { type: 'separator' },
@@ -96,7 +96,7 @@ let template = [
         label: 'Learn More',
         click: async () => {
           const { shell } = require('electron')
-          await shell.openExternal('https://electronjs.org')
+          await shell.openExternal('https://github.com/adnanpri/nerdchat')
         }
       }
     ]
@@ -107,10 +107,4 @@ module.exports = {
     getTemplate: () => template,
     getViewIndex: () => isMac? 3:2,
     getServicesIndex: () => isMac? 5:4,
-    // addZoomMenu: (menu) => {
-
-    // },
-    // updateShortcuts: (shortcuts) => {
-    //     return template
-    // }
 }

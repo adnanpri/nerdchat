@@ -4,7 +4,6 @@ const path = require('path')
 const { contextIsolated } = require('process')
 const contextMenu = require('electron-context-menu');
 
-const axios = require('axios').default
 const fs = require('fs')
 var https = require('https');
 
@@ -177,10 +176,10 @@ app.on('window-all-closed', function () {
 let ipcHandlers = {
   addShortcuts: (msg) => {
 
-    let subs = []
+    let svcSubs = []
 
     for (let i = 1; i <= msg.length; i++) {
-      subs.push({
+      svcSubs.push({
         role: 'shortcut',
         label: msg[i-1].title,
         accelerator: 'CmdOrCtrl+' + i,
@@ -191,23 +190,27 @@ let ipcHandlers = {
       })
     }
 
-    menuTpl[appMenu.getServicesIndex()].submenu = subs
+    menuTpl[appMenu.getServicesIndex()].submenu = svcSubs
+
+    let viewSubs = [
+      {
+        label: 'Reload',
+        accelerator: 'CmdOrCtrl+R',
+        click: async () => {
+          devlog('Pressed shortcut CmdOrCtrl+R')
+          window.webContents.send('shortcutHit', 'reload')
+        }
+      },
+      ...menuTpl[appMenu.getViewIndex()].submenu
+    ]
+    // viewSubs.prepend()
+
+    menuTpl[appMenu.getViewIndex()].submenu = viewSubs
 
     Menu.setApplicationMenu(Menu.buildFromTemplate(menuTpl))
 
     return true
   },
-  // getFavicon: async(msg) => {
-
-  //   try {
-  //     const res = await axios(msg.url)
-  //     const txt = await res.text();
-
-
-  //   } catch (e) {
-  //     devlog(e)
-  //   }
-  // },
   getFaviconSync: async(msg) => {
 
     try {
