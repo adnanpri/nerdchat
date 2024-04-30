@@ -203,7 +203,6 @@ let ipcHandlers = {
       },
       ...menuTpl[appMenu.getViewIndex()].submenu
     ]
-    // viewSubs.prepend()
 
     menuTpl[appMenu.getViewIndex()].submenu = viewSubs
 

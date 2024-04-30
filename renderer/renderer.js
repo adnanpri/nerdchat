@@ -282,7 +282,8 @@ let makeTabs = (tabs) => {
 		wv.style['z-index'] = 0
 		// wv.setAttribute('useragent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36')
 		wv.setAttribute('useragent', 'Mozilla/5.0 (Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0')
-		wv.setAttribute('partition', 'persist:svc-' + tab.id)
+		// wv.setAttribute('partition', 'persist:svc-' + tab.id)
+		wv.setAttribute('partition', 'persist:svc-nerdchat-global-session')
 		wv.setAttribute('allowpopups', 'true')
 		if (tab.runPreloadScript) {
 			wv.setAttribute('preload', './sw.js')
