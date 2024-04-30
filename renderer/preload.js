@@ -107,6 +107,17 @@ contextBridge.exposeInMainWorld('mainApp', {
   
       return services  
   },
+
+  saveServicesWithObject: (servicesObj) => {
+    try {
+      localStorage.setItem('services', JSON.stringify(servicesObj)) 
+    } catch (e) {
+      devlog(e)
+      return []
+    }
+
+    return services  
+  },
   // generic interface for calling main
   ipcCall: (msg, handler) => {
     devlog('ipc called with ', msg)

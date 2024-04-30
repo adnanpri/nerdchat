@@ -54,11 +54,29 @@ let tabs = mainApp.getServices()
 
 let settingsModal = $('#settingsModal')
 
+let settingsEditModal = $('#settingsEditModal')
+let settingsText = $('#settingsText')
+
 let selectorsContainer = $('.tabsSelectors')
 
 let webviewContainer = $('#webviewContainer')
 
 let currentTabIndex = undefined
+
+// @TODO fix naming jeez
+let showEditSettingsModal = () => {
+	let json = 'error parsing services'
+
+	try {
+		json = JSON.stringify(tabs, null, 2)
+	} catch (error) {
+		console.log('error parsing services on edit', error)
+	}
+
+	settingsText.value = json
+
+	settingsEditModal.style.display = 'block'
+}
 
 let showSettingsModalAdd = () => {
 	$('#tabSettingsId').value = generateUUID()
@@ -155,8 +173,39 @@ let deleteService = () => {
 	settingsModal.style.display = 'none'
 }
 
+let saveEditService = () => {
+	let servicesObj
+
+	try {
+		devlog(settingsText.value)
+		servicesObj = JSON.parse(settingsText.value)
+	} catch (error) {
+		return console.log('error saving services from edit', error)
+	}
+
+	tabs = mainApp.saveServicesWithObject(servicesObj)
+
+	makeTabs(tabs)
+
+	if (!currentTabIndex && tabs.length) {
+		currentTabIndex = 0
+
+		setActiveTab(
+			$$('.tabSelector')[currentTabIndex]
+		)
+	}
+
+	alert('Saved successfully.')
+
+	settingsEditModal.style.display = 'none'
+}
+
 let hideSettingsModal = () => {
 	settingsModal.style.display = 'none'
+}
+
+let hideSettingsEditModal = () => {
+	settingsEditModal.style.display = 'none'
 }
 
 devlog(document.querySelector('.tabSelectors'))
@@ -197,6 +246,11 @@ let handleTabClick = (evt, elem) => {
 
 	if (srcElement.dataset.tabId == 'add') {
 		showSettingsModalAdd()
+		return
+	}
+
+	if (srcElement.dataset.tabId == 'edit') {
+		showEditSettingsModal()
 		return
 	}
 
@@ -260,6 +314,24 @@ let makeTabs = (tabs) => {
 		addSelector.addEventListener('click', handleTabClick)
 	}
 
+	let editSelector = $('.editTab')
+
+	if (!editSelector) {
+		editSelector = document.createElement('li')
+		let img = document.createElement('img')
+		img.src = './res/edit_white.png'
+		img.classList.add('tabSelectorImage')
+		editSelector.appendChild(img)
+		editSelector.dataset.tabId = 'edit'
+		editSelector.dataset.tabIndex = tabs.length
+		editSelector.classList.add('tabSelector')
+		editSelector.classList.add('editTab')
+
+		selectorsContainer.appendChild(editSelector);
+
+		editSelector.addEventListener('click', handleTabClick)
+	}
+
 	tabs.forEach((tab, i) => {
 
 		if ($('#tab-svc-' + tab.id)) {
@@ -304,6 +376,9 @@ let makeTabs = (tabs) => {
 $('#btnCloseTabSettings').addEventListener('click', hideSettingsModal)
 $('#btnSaveTabSettings').addEventListener('click', saveService)
 $('#btnDeleteTabSettings').addEventListener('click', deleteService)
+
+$('#btnEditCloseSettings').addEventListener('click', hideSettingsEditModal)
+$('#btnEditSaveSettings').addEventListener('click', saveEditService)
 
 $('#tabSettingsUrl').addEventListener('keyup', debounce(() => {
 
